@@ -5,7 +5,7 @@ else
 
 	KERNELDIR        ?= /lib/modules/$(shell uname -r)/build
 	MODULE_DIR       ?= $(shell pwd)
-	ARCH             ?= $(shell uname -i)
+	ARCH             ?=
 	CROSS_COMPILE    ?=
 	INSTALL_MOD_PATH ?= /
 
