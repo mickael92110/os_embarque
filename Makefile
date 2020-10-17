@@ -1,6 +1,6 @@
 ifneq (${KERNELRELEASE},)
 
-  obj-m += rpi_gpio_test_simple.o
+  obj-m = rpi_gpio_test_simple.o
 
 else
 
