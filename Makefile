@@ -12,10 +12,14 @@ else
 all: modules
 
 modules:
-	${MAKE} ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} -C ${KERNELDIR} SUBDIRS=${MODULE_DIR}  modules
+	export ARCH=$(ARCH)
+	export CROSS_COMPILE=$(CROSS_COMPILE)
+	${MAKE}  -C ${KERNELDIR} SUBDIRS=${MODULE_DIR}  modules
 
 modules_install:
-	${MAKE} ARCH=${ARCH} CROSS_COMPILE=${CROSS_COMPILE} INSTALL_MOD_PATH=${INSTALL_MOD_PATH} -C ${KERNELDIR} SUBDIRS=${MODULE_DIR}  modules_install
+	export ARCH=$(ARCH)
+	export CROSS_COMPILE=$(CROSS_COMPILE)
+	${MAKE} INSTALL_MOD_PATH=${INSTALL_MOD_PATH} -C ${KERNELDIR} SUBDIRS=${MODULE_DIR}  modules_install
 
 clean:
 	rm -f *.o *.ko *.mod.c .*.o .*.ko .*.mod.c .*.cmd *~
