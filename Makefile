@@ -1,7 +1,6 @@
 ifneq (${KERNELRELEASE},)
 
   	obj-m = rpi_gpio_test_simple.o
-
 else
 
 	KERNELDIR        ?= /lib/modules/$(shell uname -r)/build
