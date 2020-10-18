@@ -23,6 +23,8 @@ static void rpi_gpio_1_function (unsigned long unused)
 
 static int __init rpi_gpio_1_init (void)
 {
+  printk(KERN_INFO "------------- On initialise le module -------------\n");
+
   int err;
 
   if ((err = gpio_request(RPI_GPIO_IN,THIS_MODULE->name)) != 0)
@@ -42,17 +44,20 @@ static int __init rpi_gpio_1_init (void)
     return err;
   }
 
-  init_timer(& rpi_gpio_1_timer);
-  rpi_gpio_1_timer.function = rpi_gpio_1_function;
-  rpi_gpio_1_timer.data = 0; // non utilise
+  init_timers();
+  //rpi_gpio_1_timer.function = rpi_gpio_1_function;
+  //rpi_gpio_1_timer.data = 0; // non utilise
   rpi_gpio_1_timer.expires = jiffies + (HZ >> 3);
   add_timer(& rpi_gpio_1_timer);
+  printk(KERN_INFO "------------- On fait osciller la pin 18 -------------\n");
 
-  return 0; 
+  return 0;
 }
 
 static void __exit rpi_gpio_1_exit (void)
 {
+  // Liberation des GPIO.
+  printk(KERN_INFO "------------- On libere les GPIO -------------\n");
   del_timer(& rpi_gpio_1_timer);
   gpio_free(RPI_GPIO_OUT);
   gpio_free(RPI_GPIO_IN);
