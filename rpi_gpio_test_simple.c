@@ -4,19 +4,8 @@
 
 //module simple qui met à 1 la pin GPIO 23
 
-#include <linux/cdev.h>
-#include <linux/device.h>
-#include <linux/fs.h>
-#include <linux/gpio.h>
-#include <linux/interrupt.h>
-#include <linux/miscdevice.h>
 #include <linux/module.h>
-#include <linux/sched.h>
-#include <linux/slab.h>
-#include <linux/spinlock.h>
-#include <linux/version.h>
-
-#include <asm/uaccess.h>
+#include <linux/gpio.h>
 
 
 // La sortie va sur la broche 16 (GPIO 23).
