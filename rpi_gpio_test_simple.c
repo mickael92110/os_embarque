@@ -15,6 +15,10 @@
 // Chargement du module .
 static int __init rpi_gpio_init(void)
 {
+
+
+    printk(KERN_INFO "------------- On initialise le module -------------\n");
+
     int err;
 
     // Demander l’accès au GPIO de sortie.
@@ -27,7 +31,7 @@ static int __init rpi_gpio_init(void)
         return err;
     }
     gpio_set_value(RPI_IRQ_GPIO_OUT, 1);
-    printk(KERN_INFO "On met la GPIO 23 a 1 1.\n");
+    printk(KERN_INFO "------------- On met la GPIO 23 a 1 -------------\n");
 
     return 0;
 }
@@ -35,6 +39,7 @@ static int __init rpi_gpio_init(void)
 static void __exit rpi_gpio_exit(void)
 {
     // Liberation des GPIO.
+    printk(KERN_INFO "------------- On libere les GPIO -------------\n");
     gpio_free(RPI_IRQ_GPIO_OUT);
 }
 module_init(rpi_gpio_init);
